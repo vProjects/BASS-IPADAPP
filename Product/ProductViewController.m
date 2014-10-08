@@ -79,8 +79,9 @@
         [self serachProduct:self.serchString];
     }
     else if ([self.link isEqualToString:@"Other"]){
-        [self inviteSospoFriends];
-    }else if ([self.link isEqualToString:@"Countary"]){
+        [self GetOtherProducts];
+    }
+    else if ([self.link isEqualToString:@"Countary"]){
         if (self.mid==0) {
             [self countaryProduct];
         }else{
@@ -496,6 +497,67 @@
     [loginRequest startAsynchronous];
 }
 
+-(void)GetOtherProducts
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://app.newbyteas.com/chitra/json/json1.php?cid=8&mid=other&p=%d",self.parsePageIndex]];
+    
+    __weak ASIFormDataRequest *loginRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    [loginRequest setTimeOutSeconds:30.0];
+    [loginRequest setCompletionBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        NSError *error=nil;
+        NSArray *arr=[NSJSONSerialization JSONObjectWithData:loginRequest.responseData options:kNilOptions error:&error];
+        
+        [self.searchFrndArr addObjectsFromArray:arr];
+        self.parsePageIndex++;
+        [self GetOtherProductsNext];
+        [self setupTableView];
+        
+    }];
+    
+    [loginRequest setFailedBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        
+    }];
+    
+    [loginRequest setRequestMethod:@"GET"];
+    [loginRequest startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+-(void)GetOtherProductsNext
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://app.newbyteas.com/chitra/json/json1.php?cid=8&mid=other&p=%d",self.parsePageIndex]];
+    
+    __weak ASIFormDataRequest *loginRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    [loginRequest setTimeOutSeconds:30.0];
+    [loginRequest setCompletionBlock:^{
+        
+        NSError *error=nil;
+        NSArray *arr=[NSJSONSerialization JSONObjectWithData:loginRequest.responseData options:kNilOptions error:&error];
+        [self.searchFrndArr addObjectsFromArray:arr];
+        
+        [self setupTableView];
+        if (self.searchFrndArr.count==0) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"No Product Found!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            self.parsePageIndex++;
+        }
+    }];
+    
+    [loginRequest setFailedBlock:^{
+        
+        
+    }];
+    
+    [loginRequest setRequestMethod:@"GET"];
+    [loginRequest startAsynchronous];
+}
 //codes by Singh ---------------#ends
 
 -(void)LatestProduct
