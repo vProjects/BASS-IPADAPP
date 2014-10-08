@@ -67,17 +67,17 @@
 }
 
 - (IBAction)didTapElectroplateButton:(id)sender {
-    CountrayViewController *countray=[[CountrayViewController alloc] initWithNibName:@"CountrayViewController" bundle:nil];
-    countray.mid=15;
-    countray.viewPushedName = @"Electroplate";
-    [self.navigationController pushViewController:countray animated:YES];
+    ProductViewController *collection=[[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
+    collection.link=@"Electroplate";
+    collection.viewPushedName = @"Electroplate";
+    [self.navigationController pushViewController:collection animated:YES];
 }
 
 - (IBAction)didTapRockCrystalButton:(id)sender {
-    CountrayViewController *countray=[[CountrayViewController alloc] initWithNibName:@"CountrayViewController" bundle:nil];
-    countray.mid=22;
-    countray.viewPushedName = @"Rock Crystal";
-    [self.navigationController pushViewController:countray animated:YES];
+    ProductViewController *collection=[[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
+    collection.link=@"RockCrystal";
+    collection.viewPushedName = @"Rock Crystal";
+    [self.navigationController pushViewController:collection animated:YES];
 }
 
 @end

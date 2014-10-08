@@ -64,6 +64,16 @@
     {
         [self LatestProduct];
     }
+    //codes by singh
+    else if([self.link isEqualToString:@"Electroplate"])
+    {
+        [self GetElectroplate];
+    }
+    //codes by singh
+    else if([self.link isEqualToString:@"RockCrystal"])
+    {
+        [self GetRockCrystal];
+    }
     else if ([self.link isEqualToString:@"Search"])
     {
         [self serachProduct:self.serchString];
@@ -77,6 +87,7 @@
             [self countaryProductWwithMid];
         }
     }
+    
 }
 
 - (void)dealloc {
@@ -358,6 +369,134 @@
     [loginRequest startAsynchronous];
     
 }
+
+//codes by Singh ---------------#Starts
+
+-(void)GetElectroplate
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://app.newbyteas.com/chitra/json/getItemByMaterial.php?mid=15&p=%d",self.parsePageIndex]];
+    
+    __weak ASIFormDataRequest *loginRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    [loginRequest setTimeOutSeconds:30.0];
+    [loginRequest setCompletionBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        NSError *error=nil;
+        NSArray *arr=[NSJSONSerialization JSONObjectWithData:loginRequest.responseData options:kNilOptions error:&error];
+        
+        [self.searchFrndArr addObjectsFromArray:arr];
+        self.parsePageIndex++;
+        [self GetElectroplateNext];
+        [self setupTableView];
+        
+    }];
+    
+    [loginRequest setFailedBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        
+    }];
+    
+    [loginRequest setRequestMethod:@"GET"];
+    [loginRequest startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+-(void)GetElectroplateNext
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://app.newbyteas.com/chitra/json/getItemByMaterial.php?mid=15&p=%d",self.parsePageIndex]];
+    
+    __weak ASIFormDataRequest *loginRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    [loginRequest setTimeOutSeconds:30.0];
+    [loginRequest setCompletionBlock:^{
+        
+        NSError *error=nil;
+        NSArray *arr=[NSJSONSerialization JSONObjectWithData:loginRequest.responseData options:kNilOptions error:&error];
+        [self.searchFrndArr addObjectsFromArray:arr];
+        
+        [self setupTableView];
+        if (self.searchFrndArr.count==0) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"No Product Found!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            self.parsePageIndex++;
+        }
+    }];
+    
+    [loginRequest setFailedBlock:^{
+        
+        
+    }];
+    
+    [loginRequest setRequestMethod:@"GET"];
+    [loginRequest startAsynchronous];
+}
+
+-(void)GetRockCrystal
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://app.newbyteas.com/chitra/json/getItemByMaterial.php?mid=22&p=%d",self.parsePageIndex]];
+    
+    __weak ASIFormDataRequest *loginRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    [loginRequest setTimeOutSeconds:30.0];
+    [loginRequest setCompletionBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        NSError *error=nil;
+        NSArray *arr=[NSJSONSerialization JSONObjectWithData:loginRequest.responseData options:kNilOptions error:&error];
+        
+        [self.searchFrndArr addObjectsFromArray:arr];
+        self.parsePageIndex++;
+        [self GetElectroplateNext];
+        [self setupTableView];
+        
+    }];
+    
+    [loginRequest setFailedBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        
+    }];
+    
+    [loginRequest setRequestMethod:@"GET"];
+    [loginRequest startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+-(void)GetRockCrystalNext
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://app.newbyteas.com/chitra/json/getItemByMaterial.php?mid=22&p=%d",self.parsePageIndex]];
+    
+    __weak ASIFormDataRequest *loginRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    [loginRequest setTimeOutSeconds:30.0];
+    [loginRequest setCompletionBlock:^{
+        
+        NSError *error=nil;
+        NSArray *arr=[NSJSONSerialization JSONObjectWithData:loginRequest.responseData options:kNilOptions error:&error];
+        [self.searchFrndArr addObjectsFromArray:arr];
+        
+        [self setupTableView];
+        if (self.searchFrndArr.count==0) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"No Product Found!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            self.parsePageIndex++;
+        }
+    }];
+    
+    [loginRequest setFailedBlock:^{
+        
+        
+    }];
+    
+    [loginRequest setRequestMethod:@"GET"];
+    [loginRequest startAsynchronous];
+}
+
+//codes by Singh ---------------#ends
 
 -(void)LatestProduct
 {
