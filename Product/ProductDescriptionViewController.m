@@ -206,6 +206,10 @@
             rangeToFont[[NSValue valueWithRange:NSMakeRange(productDetails.length, [requiredParams[key] length] + 1)]] = titleAttr;
             [productDetails appendFormat:@"%@: %@\n", requiredParams[key], [self stringByStrippingHTML:[self.productDict valueForKey:key]]];
         }
+        else {
+            rangeToFont[[NSValue valueWithRange:NSMakeRange(productDetails.length, [requiredParams[key] length] + 1)]] = titleAttr;
+            [productDetails appendFormat:@"%@: %@\n", requiredParams[key], [self stringByStrippingHTML:@"Not Applicable"]];
+        }
     }
 
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:productDetails
@@ -370,6 +374,12 @@
             rangeToFont[[NSValue valueWithRange:NSMakeRange(info.length, [requiredParams[key] length] + 1)]] = titleAttr;
             [info appendFormat:@"%@: ",requiredParams[key]];
             [info appendString:[self stringByStrippingHTML:[self.productDict valueForKey:key]]];
+            [info appendString:@"\n"];
+        }
+        else {
+            rangeToFont[[NSValue valueWithRange:NSMakeRange(info.length, [requiredParams[key] length] + 1)]] = titleAttr;
+            [info appendFormat:@"%@: ",requiredParams[key]];
+            [info appendString:[self stringByStrippingHTML:@"Not Applicable"]];
             [info appendString:@"\n"];
         }
     }
