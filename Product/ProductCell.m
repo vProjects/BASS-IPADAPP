@@ -31,4 +31,13 @@
                                                       userInfo:nil];
 }
 
+- (void)getActualPositionForPoint:(CGPoint)point {
+    NSInteger relativeYPosition = point.y - self.bounds.origin.y;
+    NSInteger indexTouched = self.columnNumber - (relativeYPosition / self.bounds.size.height);
+    NSInteger actualPosition = (self.columnNumber * 3) + indexTouched;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"itemTappedNotification"
+                                                        object:@(actualPosition)
+                                                      userInfo:nil];
+}
+
 @end

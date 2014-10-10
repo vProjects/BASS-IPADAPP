@@ -143,6 +143,15 @@
     self.isDownloadingDataFromServer = NO;
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches allObjects].firstObject;
+    CGPoint touchPoint = [touch locationInView:touch.view];
+    UIView *targetView = [self.tableView hitTest:touchPoint withEvent:event];
+    if ([targetView isKindOfClass:[UIButton class]]) {
+        [(UIButton *)targetView sendActionsForControlEvents:UIControlEventAllTouchEvents];
+    }
+}
+
 - (void)handleRightSwipe:(UISwipeGestureRecognizer *)swipe {
     NSInteger pageNum = self.currentPage - 1;
     if (pageNum >= 0) {
@@ -314,9 +323,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 
 #pragma  mark - ClassMethod
 

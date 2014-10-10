@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *btn3;
 
 +(id)productCell;
+- (void)getActualPositionForPoint:(CGPoint)point;
 
 @end
