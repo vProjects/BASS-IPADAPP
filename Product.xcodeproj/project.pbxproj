@@ -17,6 +17,7 @@
 		46DB4B3A19A3114C0021629C /* WOXYKI+Bembo-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46DB4B3819A3114C0021629C /* WOXYKI+Bembo-Semibold.ttf */; };
 		46DB4B3B19A3114C0021629C /* WOXYKI+Bembo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46DB4B3919A3114C0021629C /* WOXYKI+Bembo.ttf */; };
 		46DB4B3E19A3177A0021629C /* FontUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DB4B3D19A3177A0021629C /* FontUtility.m */; };
+		46F25C2F19E7C5EA00FD5218 /* IPA in Resources */ = {isa = PBXBuildFile; fileRef = 46F25C2E19E7C5EA00FD5218 /* IPA */; };
 		95176432195F0EA0008E92B7 /* UIImageView+PhotoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 95176431195F0E9F008E92B7 /* UIImageView+PhotoFrame.m */; };
 		952C5E141983D66200B5BA07 /* back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 952C5E131983D66200B5BA07 /* back.jpg */; };
 		953181DC195C9971009E2CFD /* 152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 953181DA195C9971009E2CFD /* 152x152.png */; };
@@ -108,6 +109,7 @@
 		46DB4B3919A3114C0021629C /* WOXYKI+Bembo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WOXYKI+Bembo.ttf"; sourceTree = "<group>"; };
 		46DB4B3C19A3177A0021629C /* FontUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontUtility.h; sourceTree = "<group>"; };
 		46DB4B3D19A3177A0021629C /* FontUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontUtility.m; sourceTree = "<group>"; };
+		46F25C2E19E7C5EA00FD5218 /* IPA */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IPA; sourceTree = "<group>"; };
 		95176430195F0E9F008E92B7 /* UIImageView+PhotoFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+PhotoFrame.h"; sourceTree = "<group>"; };
 		95176431195F0E9F008E92B7 /* UIImageView+PhotoFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+PhotoFrame.m"; sourceTree = "<group>"; };
 		952C5E131983D66200B5BA07 /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		95B9AF0D1957146C00E96889 = {
 			isa = PBXGroup;
 			children = (
+				46F25C2E19E7C5EA00FD5218 /* IPA */,
 				46DB4B3819A3114C0021629C /* WOXYKI+Bembo-Semibold.ttf */,
 				46DB4B3919A3114C0021629C /* WOXYKI+Bembo.ttf */,
 				4684E71F199DC1EB003E8074 /* electroplateButton.png */,
@@ -561,6 +564,7 @@
 				955817ED19843531002273E9 /* Default@2x.png in Resources */,
 				4684E722199DC1EB003E8074 /* rockCrystalButton.png in Resources */,
 				95B9AF6E1957160100E96889 /* ProductInfoViewController.xib in Resources */,
+				46F25C2F19E7C5EA00FD5218 /* IPA in Resources */,
 				952C5E141983D66200B5BA07 /* back.jpg in Resources */,
 				958174DE197DA45400AF8851 /* info_selected.png in Resources */,
 				955817F419844C1B002273E9 /* no_imgae@2x.png in Resources */,
