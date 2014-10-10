@@ -113,6 +113,22 @@
                                                  selector:@selector(receivedProductTappedNotification:)
                                                      name:@"itemTappedNotification"
                                                    object:nil];
+        UIView *coveringView = [[UIView alloc] initWithFrame:self.tableView.frame];
+        coveringView.opaque = NO;
+
+        UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftSwipe:)];
+        UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightSwipe:)];
+
+        // Setting the swipe direction.
+        [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+        [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+
+        // Adding the swipe gesture on image view
+        [coveringView addGestureRecognizer:swipeLeft];
+        [coveringView addGestureRecognizer:swipeRight];
+
+
+        [self.view addSubview:coveringView];
     }
     if (self.totalItems < self.searchFrndArr.count) {
         NSInteger extraElements = self.searchFrndArr.count - self.totalItems;
@@ -125,6 +141,21 @@
     [self.tableView reloadData];
     [self refreshPaginationButtons];
     self.isDownloadingDataFromServer = NO;
+}
+
+- (void)handleRightSwipe:(UISwipeGestureRecognizer *)swipe {
+    NSInteger pageNum = self.currentPage - 1;
+    if (pageNum >= 0) {
+        [self scrollToPage:pageNum];
+    }
+}
+
+- (void)handleLeftSwipe:(UISwipeGestureRecognizer *)swipe {
+    NSInteger pageNum = self.currentPage + 1;
+    NSInteger totalPage = self.totalItems / kMaxItemPerPage + 1;
+    if (pageNum < totalPage) {
+        [self scrollToPage:pageNum];
+    }
 }
 
 - (void)showDebugAlertMessage:(NSString *)message {
@@ -181,6 +212,10 @@
     } else {
         return;
     }
+    [self scrollToPage:pageNumberToScrollTo];
+}
+
+- (void)scrollToPage:(NSInteger)pageNumberToScrollTo {
     NSInteger itemToScrollTo = kMaxItemPerPage * pageNumberToScrollTo;
     NSInteger indexPathToScroll = itemToScrollTo / 3;
     [self.tableView selectCellAtIndexPath:[NSIndexPath indexPathForRow:indexPathToScroll inSection:0]
