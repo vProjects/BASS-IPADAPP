@@ -261,7 +261,7 @@
         NSDictionary *dataDictionary = self.searchFrndArr[requiredItemIndex];
         label.text = [self stringByStrippingHTML:dataDictionary[@"Provenance"]];
         NSString *photoURL;
-        if (dataDictionary[@"Photos"]) {
+        if (dataDictionary[@"Photos"] && dataDictionary[@"Photos"] != [NSNull null]) {
             photoURL = [dataDictionary[@"Photos"] componentsSeparatedByString:@","].firstObject;
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BASEURL, photoURL]];
             if (url) {
