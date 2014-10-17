@@ -60,10 +60,10 @@
 }
 
 - (IBAction)didTapXXICenturyButton:(id)sender {
-    CountrayViewController *countray=[[CountrayViewController alloc] initWithNibName:@"CountrayViewController" bundle:nil];
-    countray.mid=21;
-    countray.viewPushedName = @"XXI Century";
-    [self.navigationController pushViewController:countray animated:YES];
+    ProductViewController *collection=[[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
+    collection.link=@"XXICentury";
+    collection.viewPushedName = @"XXI Century";
+    [self.navigationController pushViewController:collection animated:YES];
 }
 
 - (IBAction)didTapElectroplateButton:(id)sender {
