@@ -290,8 +290,11 @@
             [self showDebugAlertMessage:[NSString stringWithFormat:@"%@ missing photo", label.text]];
 #endif
         }
+        UIColor *bgGray = [UIColor colorWithRed:35/255.0f green:31/255.0f blue:32/255.0f alpha:1.0f];
+        [imageView setBackgroundColor:bgGray];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
         [imageView applyPhotoFrame];
-
+        
     }
     [self updatePaginationSelectedButtonForColumn:indexPath.row];
     if ((indexPath.row * 3) + kThresholdForLazyLoading >= self.searchFrndArr.count && !self.isDownloadingDataFromServer && self.searchFrndArr.count < self.totalItems) {
@@ -939,6 +942,33 @@
     
     [loginRequest setRequestMethod:@"GET"];
     [loginRequest startAsynchronous];
+}
+
+//codes to resize the image
+// Auth Singh
+-(UIImage *)adjustImageSize:(UIImage *)image
+{
+    
+    float actualHeight = image.size.height;
+    
+    float actualWidth = image.size.width;
+    
+    
+    
+    float ratio=300/actualWidth;
+    actualHeight = actualHeight*ratio;
+    
+    CGRect rect = CGRectMake(0.0, 0.0, 300, actualHeight);
+    // UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 1.0);
+    [image drawInRect:rect];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
+    
+    
 }
 
 @end
