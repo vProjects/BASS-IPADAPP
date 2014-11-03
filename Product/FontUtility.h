@@ -5,8 +5,8 @@
 //  Created by Shimul Bhowmik on 8/18/14.
 //
 
-#define kFontSemiBold @"WOXYKI+Bembo-Semibold"
-#define kFontRegular @"WOXYKI+Bembo"
+#define kFontSemiBold @"Bembo-Semibold"
+#define kFontRegular @"Bembo"
 
 @interface FontUtility : NSObject
 

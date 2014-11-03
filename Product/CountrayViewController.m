@@ -137,12 +137,12 @@
 #pragma mark – UICollectionViewDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGSize retval = CGSizeMake(200, 55);
+    CGSize retval = CGSizeMake(250, 55);
     return retval;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(20, 20, 0, 0);
+    return UIEdgeInsetsMake(20, 0, 0, 0);
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

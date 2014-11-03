@@ -323,6 +323,9 @@
     NSString *resultString = [[s componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@" "];
     NSLog (@"Result: %@", resultString);
     return resultString;
+    
+   
+    
 }
 
 

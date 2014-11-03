@@ -149,6 +149,8 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Bembo.ttf</string>
+		<string>Bembo-Semibold.ttf</string>
 		<string>WOXYKI+Bembo-Semibold.ttf</string>
 		<string>WOXYKI+Bembo.ttf</string>
 	</array>
